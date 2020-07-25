@@ -1,4 +1,4 @@
-package com.hakke.controller;
+package com.hakke.ecommerce.controller;
 
 public class CheckoutRestController {
 
