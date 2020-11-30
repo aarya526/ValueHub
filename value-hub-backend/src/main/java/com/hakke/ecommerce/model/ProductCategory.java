@@ -11,9 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
 @Table(name = "product_category")
 //@Getter
@@ -53,6 +50,11 @@ public class ProductCategory {
 
 	public void setProducts(Set<Product> products) {
 		this.products = products;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductCategory [id=" + id + ", categoryName=" + categoryName + ", products=" + products + "]";
 	}
 
 }

@@ -13,8 +13,10 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 
+import com.hakke.ecommerce.model.Country;
 import com.hakke.ecommerce.model.Product;
 import com.hakke.ecommerce.model.ProductCategory;
+import com.hakke.ecommerce.model.State;
 
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
@@ -32,16 +34,21 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
 		HttpMethod[] unSupportedActions = { HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE };
 
-		config.getExposureConfiguration().forDomainType(Product.class)
-				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unSupportedActions))
-				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unSupportedActions));
-
-		config.getExposureConfiguration().forDomainType(ProductCategory.class)
-				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unSupportedActions))
-				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unSupportedActions));
+		disableHttpMethods(Product.class, config, unSupportedActions);
+		disableHttpMethods(ProductCategory.class, config, unSupportedActions);
+		disableHttpMethods(Country.class, config, unSupportedActions);
+		disableHttpMethods(State.class, config, unSupportedActions);
 
 		// call an internal helper method to expose id of categories
 		exposeIds(config);
+	}
+
+	private void disableHttpMethods(Class theClass, RepositoryRestConfiguration config,
+			HttpMethod[] unSupportedActions) {
+		// disable Http Methods for Entity Classes: PUT, POST and delete
+		config.getExposureConfiguration().forDomainType(theClass)
+				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unSupportedActions))
+				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unSupportedActions));
 	}
 
 	private void exposeIds(RepositoryRestConfiguration config) {
@@ -55,7 +62,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 			entityClasses.add(tempEntityType.getJavaType());
 
 		}
-		
+
 		Class[] domainTypes = entityClasses.toArray(new Class[0]);
 		config.exposeIdsFor(domainTypes);
 
