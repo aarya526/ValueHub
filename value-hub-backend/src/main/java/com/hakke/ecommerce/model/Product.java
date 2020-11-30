@@ -14,8 +14,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.Data;
-
 @Entity
 @Table(name = "product")
 public class Product {
@@ -144,6 +142,14 @@ public class Product {
 
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", category=" + category + ", sku=" + sku + ", name=" + name + ", description="
+				+ description + ", unitPrice=" + unitPrice + ", imageUrl=" + imageUrl + ", active=" + active
+				+ ", unitsInStock=" + unitsInStock + ", dateCreated=" + dateCreated + ", lastUpdated=" + lastUpdated
+				+ "]";
 	}
 
 }
