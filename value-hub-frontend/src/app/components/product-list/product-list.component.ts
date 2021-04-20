@@ -12,52 +12,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[] = [
-    {
-      id: 1,
-      name: "Apple Iphone 6s",
-      sku: "app1",
-      description: "Apple Iphone 6s",
-      unitPrice: 849,
-      imageUrl: "/assets/images/products/books/book-luv2code-1000.png",
-      active: true,
-      unitsInStock: 8,
-      dateCreated: undefined,
-      lastUpdated: undefined
-    }, {
-      id: 2,
-      name: "Apple Iphone 7",
-      sku: "app1",
-      description: "Apple Iphone 7",
-      unitPrice: 1200,
-      imageUrl: "/assets/images/products/books/book-luv2code-1000.png",
-      active: true,
-      unitsInStock: 11,
-      dateCreated: undefined,
-      lastUpdated: undefined
-    }, {
-      id: 3,
-      name: "Apple Iphone 7 plus",
-      sku: "app1",
-      description: "Apple Iphone 7 plus",
-      unitPrice: 1049,
-      imageUrl: "/assets/images/products/books/book-luv2code-1000.png",
-      active: true,
-      unitsInStock: 8,
-      dateCreated: undefined,
-      lastUpdated: undefined
-    }, {
-      id: 4,
-      name: "Apple Iphone 8",
-      sku: "app1",
-      description: "Apple Iphone 8",
-      unitPrice: 999,
-      imageUrl: "/assets/images/products/books/book-luv2code-1000.png",
-      active: true,
-      unitsInStock: 12,
-      dateCreated: undefined,
-      lastUpdated: undefined
-    }];
+  products: Product[] = [];
   currentCategoryId: number = 1;
   searchMode: boolean = false;
   previousCategoryId: number = 1;

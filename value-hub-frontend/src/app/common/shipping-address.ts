@@ -4,6 +4,6 @@ export class ShippingAddress {
     street: string;
     city: string;
     state: string;
-    zipCode: number;
+    zipcode: number;
 }
 

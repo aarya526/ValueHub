@@ -6,12 +6,7 @@ import { Customer } from './customer';
 
 export class Order {
 
-    customer: Customer;
-    subTotal: number;
-    quantityOrdered: number;
-    cartItems: CartItem[];
-    billingAddress: BillingAddress;
-    shippingAddress: ShippingAddress;
-    paymentDetails: PaymentDetails;
+    totalQuantity: Number;
+    totalPrice: Number;
 
 }
